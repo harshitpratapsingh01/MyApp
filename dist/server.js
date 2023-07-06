@@ -27,17 +27,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const get_1 = require("./src/routes/get");
 const dotenv = __importStar(require("dotenv"));
+const get_1 = __importDefault(require("./src/routes/get"));
 dotenv.config();
-const router = express_1.default.Router();
+const app = (0, express_1.default)();
 const port = process.env.PORT;
 const sk = process.env.secret_key;
-router.get('/', (req, res) => {
-    (0, get_1.user_details)(req, res);
+app.use('/', get_1.default);
+app.listen(port, () => {
+    return console.log(`Express is listening at http://localhost:${port}`);
 });
-// router.listen(port, () => {
-//   return console.log(`Express is listening at http://localhost:${port}`);
-// });
-exports.default = router;
 //# sourceMappingURL=server.js.map

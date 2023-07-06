@@ -1,20 +1,19 @@
 import express from 'express';
-import { user_details } from './src/routes/get';
 import * as dotenv from "dotenv";
+import router from './src/routes/get';
+
+
 dotenv.config();
-const router = express.Router();
+const app = express();
 
 
 const port = process.env.PORT;
 const sk = process.env.secret_key;
 
-router.get('/', (req, res) => {
-    user_details(req,res);
+app.use('/', router);
+
+
+app.listen(port, () => {
+  return console.log(`Express is listening at http://localhost:${port}`);
 });
 
-
-// router.listen(port, () => {
-//   return console.log(`Express is listening at http://localhost:${port}`);
-// });
-
-export default router;

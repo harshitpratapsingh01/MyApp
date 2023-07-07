@@ -39,7 +39,6 @@ const sk = process.env.secret_key;
 app.use('/', get_1.default);
 app.use('/post', post_1.postRouter);
 app.use('/put/', put_1.putRouter);
-// app.all('/', )
 app.listen(port, () => {
     return console.log(`Express is listening at http://localhost:${port}`);
 });

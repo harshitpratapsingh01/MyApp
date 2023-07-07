@@ -29,11 +29,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv = __importStar(require("dotenv"));
 const get_1 = __importDefault(require("./src/routes/get"));
+const post_1 = require("./src/routes/post");
+const put_1 = require("./src/routes/put");
 dotenv.config();
 const app = (0, express_1.default)();
+app.use(express_1.default.json());
 const port = process.env.PORT;
 const sk = process.env.secret_key;
 app.use('/', get_1.default);
+app.use('/post', post_1.postRouter);
+app.use('/put/', put_1.putRouter);
+// app.all('/', )
 app.listen(port, () => {
     return console.log(`Express is listening at http://localhost:${port}`);
 });

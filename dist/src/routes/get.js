@@ -14,7 +14,7 @@ router.get('/:id', (req, res) => {
             res.status(200).json(user);
         }
         else {
-            res.status(500).json("User Not Found");
+            res.status(500).json({ statusCode: '500', status: "User Not Found" });
         }
         // res.json(details);
         // console.log(req);

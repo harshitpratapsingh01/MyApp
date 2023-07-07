@@ -16,8 +16,6 @@ app.use('/', router);
 app.use('/post',postRouter);
 app.use('/put/', putRouter);
 
-// app.all('/', )
-
 app.listen(port, () => {
   return console.log(`Express is listening at http://localhost:${port}`);
 });
